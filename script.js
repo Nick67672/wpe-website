@@ -137,7 +137,7 @@ contactForm.addEventListener('submit', async e => {
   btn.textContent = 'Sending…';
   btn.disabled = true;
   try {
-    const res = await fetch(contactForm.action, {
+    const res = await fetch('https://formsubmit.co/ajax/nick.webb@warwick.ac.uk', {
       method: 'POST',
       body: new FormData(contactForm),
       headers: { 'Accept': 'application/json' }
