@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Warwick Private Equity Society</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" data-section="hero">
+        <img src="assets/WPE.png" alt="WPE Logo" class="logo-svg" />
+        <span class="nav-brand">WARWICK PRIVATE EQUITY SOCIETY</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about"    class="nav-link" data-section="about">About Us</a></li>
+        <li><a href="#partners" class="nav-link" data-section="partners">Partners</a></li>
+        <li><a href="#events"   class="nav-link" data-section="events">Events</a></li>
+        <li><a href="#divisions"class="nav-link" data-section="divisions">Divisions</a></li>
+        <li><a href="#contact"  class="nav-link nav-link--cta" data-section="contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero" class="section hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Warwick Private Equity Society</h1>
+      <p class="hero-sub">Warwick's first and only society dedicated to Private Equity</p>
+      <a href="#about" class="btn btn-gold scroll-btn">Discover More</a>
+    </div>
+    <div class="hero-scroll-hint">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- ── ABOUT US ── -->
+  <section id="about" class="section about">
+    <div class="container">
+      <h2 class="section-title gold-underline">ABOUT US</h2>
+      <p class="about-text">
+        Our mission is to prepare Warwick students for a successful career in Private Equity by hosting
+        speakers and running technical workshops. We then partner with firms exposing them to high potential
+        internship and graduate scheme candidates through office visits and campus events.
+      </p>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <i class="fa-solid fa-users"></i>
+          <span class="stat-number" data-target="450">0</span>
+          <span class="stat-label">Members</span>
+        </div>
+        <div class="stat-card">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span class="stat-number" data-target="40">0</span>
+          <span class="stat-label">Events</span>
+        </div>
+        <div class="stat-card">
+          <i class="fa-solid fa-user-group"></i>
+          <span class="stat-number" data-target="1400">0</span>
+          <span class="stat-label">Followers</span>
+        </div>
+        <div class="stat-card">
+          <i class="fa-solid fa-handshake"></i>
+          <span class="stat-number" data-target="5">0</span>
+          <span class="stat-label">Partners</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PARTNERS ── -->
+  <section id="partners" class="section partners">
+    <div class="container">
+      <h2 class="section-title gold-underline light">OUR PARTNERS</h2>
+      <div class="partners-grid">
+        <div class="partner-card">
+          <img src="assets/partners/Ares.png" alt="Ares Management" />
+        </div>
+        <div class="partner-card">
+          <img src="assets/partners/Gemcorp.png" alt="Gemcorp Capital" />
+        </div>
+        <div class="partner-card">
+          <img src="assets/partners/Keensight.png" alt="Keensight Capital" />
+        </div>
+        <div class="partner-card">
+          <img src="assets/partners/Goldman.png" alt="Goldman Sachs" />
+        </div>
+        <div class="partner-card">
+          <img src="assets/partners/WSO.png" alt="Wall Street Oasis" />
+        </div>
+      </div>
+      <p class="partners-cta-text">Interested in partnering with us?</p>
+      <a href="#contact" class="btn btn-gold">Get In Touch</a>
+    </div>
+  </section>
+
+  <!-- ── EVENTS ── -->
+  <section id="events" class="section events">
+    <div class="container">
+      <h2 class="section-title gold-underline">OUR EVENTS</h2>
+      <p class="section-intro">From speaker panels to technical workshops, we run a wide range of events throughout the academic year.</p>
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-icon"><i class="fa-solid fa-microphone-lines"></i></div>
+          <h3>Speaker Panels</h3>
+          <p>Industry professionals share their journeys into Private Equity and offer candid career advice.</p>
+        </div>
+        <div class="event-card">
+          <div class="event-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <h3>Technical Workshops</h3>
+          <p>Hands-on sessions covering LBO modelling, due diligence, and deal structuring.</p>
+        </div>
+        <div class="event-card">
+          <div class="event-icon"><i class="fa-solid fa-building-columns"></i></div>
+          <h3>Office Visits</h3>
+          <p>Exclusive firm visits giving members a first-hand look at PE culture and operations.</p>
+        </div>
+        <div class="event-card">
+          <div class="event-icon"><i class="fa-solid fa-trophy"></i></div>
+          <h3>Case Competitions</h3>
+          <p>Test your skills in a realistic investment competition judged by industry professionals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DIVISIONS ── -->
+  <section id="divisions" class="section divisions">
+    <div class="container">
+      <h2 class="section-title gold-underline">OUR DIVISIONS</h2>
+      <p class="section-intro">Our society is structured into specialist divisions to give members focused, career-relevant experience.</p>
+      <div class="divisions-grid">
+        <div class="division-card">
+          <div class="division-icon"><i class="fa-solid fa-briefcase"></i></div>
+          <h3>Buyouts</h3>
+          <p>Covers traditional private equity investments. Trains members in Leveraged Buyouts and the process of a deal, creating LBO reports on recent transactions.</p>
+        </div>
+        <div class="division-card">
+          <div class="division-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+          <h3>Private Credit</h3>
+          <p>Prepares members for a career in Private Credit, learning industry trends, what lenders look for, and how Private Credit interacts with the wider buyside.</p>
+        </div>
+        <div class="division-card">
+          <div class="division-icon"><i class="fa-solid fa-rocket"></i></div>
+          <h3>Growth Equity</h3>
+          <p>Focuses on investment into smaller high-growth companies, teaching members how to navigate valuations when less information is available.</p>
+        </div>
+        <div class="division-card">
+          <div class="division-icon"><i class="fa-solid fa-building"></i></div>
+          <h3>Real Assets</h3>
+          <p>Encompasses Infrastructure and Real Estate Private Equity, with a focus on long time horizons and stability of returns.</p>
+        </div>
+        <div class="division-card">
+          <div class="division-icon"><i class="fa-solid fa-newspaper"></i></div>
+          <h3>Insight</h3>
+          <p>Makes sure our members are up to date and commercially aware, while also posting industry reports for access to the wider public.</p>
+        </div>
+        <div class="division-card">
+          <div class="division-icon"><i class="fa-solid fa-user-tie"></i></div>
+          <h3>Careers</h3>
+          <p>Panel events, CV clinics and mentorship schemes. Our Careers team ensures our members are prepared in their internship and graduate role journey.</p>
+        </div>
+        <div class="division-card">
+          <div class="division-icon"><i class="fa-solid fa-handshake"></i></div>
+          <h3>Outreach &amp; Partnerships</h3>
+          <p>Builds relationships with partner firms and brings speakers to Warwick from across the buyside.</p>
+        </div>
+        <div class="division-card">
+          <div class="division-icon"><i class="fa-solid fa-bullhorn"></i></div>
+          <h3>Marketing</h3>
+          <p>Grows the reach and presence of the society, ensuring members are always aware of upcoming events and opportunities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact" class="section contact">
+    <div class="container contact-inner">
+      <div class="contact-left">
+        <h2 class="section-title gold-underline">CONTACT US</h2>
+        <p>Whether you're a student looking to get involved or a firm interested in partnering with us, we'd love to hear from you.</p>
+        <ul class="contact-details">
+          <li><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/company/warwick-private-equity-society/" target="_blank">Warwick PE Society</a></li>
+          <li><i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com/warwickprivateequitysociety/?hl=en-gb" target="_blank">@warwickprivateequitysociety</a></li>
+        </ul>
+      </div>
+      <form class="contact-form" id="contact-form">
+        <div class="form-group">
+          <input type="text" id="name" placeholder="Your Name" required />
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" placeholder="Your Email" required />
+        </div>
+        <div class="form-group">
+          <select id="subject">
+            <option value="" disabled selected>I am a…</option>
+            <option value="student">Student</option>
+            <option value="firm">Firm / Recruiter</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea id="message" rows="5" placeholder="Your message…" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold full-width">Send Message</button>
+        <p class="form-success" id="form-success">Message sent! We'll be in touch soon.</p>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ── PROGRESS BAR ── -->
+  <div id="scroll-progress"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
