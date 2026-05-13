@@ -194,23 +194,23 @@
           <li><i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com/warwickprivateequitysociety/?hl=en-gb" target="_blank">@warwickprivateequitysociety</a></li>
         </ul>
       </div>
-      <form class="contact-form" id="contact-form">
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/xdabjwyy" method="POST">
         <div class="form-group">
-          <input type="text" id="name" placeholder="Your Name" required />
+          <input type="text" name="name" placeholder="Your Name" required />
         </div>
         <div class="form-group">
-          <input type="email" id="email" placeholder="Your Email" required />
+          <input type="email" name="email" placeholder="Your Email" required />
         </div>
         <div class="form-group">
-          <select id="subject">
+          <select name="type">
             <option value="" disabled selected>I am a…</option>
-            <option value="student">Student</option>
-            <option value="firm">Firm / Recruiter</option>
-            <option value="other">Other</option>
+            <option value="Student">Student</option>
+            <option value="Firm / Recruiter">Firm / Recruiter</option>
+            <option value="Other">Other</option>
           </select>
         </div>
         <div class="form-group">
-          <textarea id="message" rows="5" placeholder="Your message…" required></textarea>
+          <textarea name="message" rows="5" placeholder="Your message…" required></textarea>
         </div>
         <button type="submit" class="btn btn-gold full-width">Send Message</button>
         <p class="form-success" id="form-success">Message sent! We'll be in touch soon.</p>

@@ -131,18 +131,29 @@ statsObserver.observe(statsSection);
 // ── CONTACT FORM ──
 const contactForm = document.getElementById('contact-form');
 const formSuccess = document.getElementById('form-success');
-contactForm.addEventListener('submit', e => {
+contactForm.addEventListener('submit', async e => {
   e.preventDefault();
   const btn = contactForm.querySelector('button[type=submit]');
   btn.textContent = 'Sending…';
   btn.disabled = true;
-  setTimeout(() => {
-    btn.textContent = 'Send Message';
-    btn.disabled = false;
-    contactForm.reset();
-    formSuccess.style.display = 'block';
-    setTimeout(() => { formSuccess.style.display = 'none'; }, 4000);
-  }, 1200);
+  try {
+    const res = await fetch(contactForm.action, {
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      contactForm.reset();
+      formSuccess.style.display = 'block';
+      setTimeout(() => { formSuccess.style.display = 'none'; }, 5000);
+    } else {
+      alert('Something went wrong. Please try again.');
+    }
+  } catch {
+    alert('Something went wrong. Please try again.');
+  }
+  btn.textContent = 'Send Message';
+  btn.disabled = false;
 });
 
 // ── MAIN SCROLL HANDLER ──
