@@ -598,6 +598,15 @@ img { max-width: 100%; display: block; }
   font-size: 0.9rem;
 }
 
+.form-error {
+  display: none;
+  text-align: center;
+  color: #c0392b;
+  font-weight: 600;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
 /* ── FOOTER ── */
 .footer {
   background: var(--navy);

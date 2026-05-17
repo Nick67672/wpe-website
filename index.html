@@ -219,8 +219,9 @@
         </ul>
       </div>
       <form class="contact-form" id="contact-form" method="POST">
-        <input type="hidden" name="_cc" value="aditya.jayaram@warwick.ac.uk,Sahanna.Nanda@warwick.ac.uk" />
-        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="access_key" value="015ee353-427e-4680-8a58-de8bd45fbc03" />
+        <input type="hidden" name="subject" value="New WPE Website Enquiry" />
+        <input type="hidden" name="redirect" value="false" />
         <div class="form-group">
           <input type="text" name="name" placeholder="Your Name" required />
         </div>
@@ -240,6 +241,7 @@
         </div>
         <button type="submit" class="btn btn-gold full-width">Send Message</button>
         <p class="form-success" id="form-success">Message sent! We'll be in touch soon.</p>
+        <p class="form-error" id="form-error">Something went wrong — please try again or email us directly.</p>
       </form>
     </div>
   </section>

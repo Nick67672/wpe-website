@@ -131,26 +131,34 @@ statsObserver.observe(statsSection);
 // ── CONTACT FORM ──
 const contactForm = document.getElementById('contact-form');
 const formSuccess = document.getElementById('form-success');
+const formError = document.getElementById('form-error');
 contactForm.addEventListener('submit', async e => {
   e.preventDefault();
   const btn = contactForm.querySelector('button[type=submit]');
   btn.textContent = 'Sending…';
   btn.disabled = true;
+  formError.style.display = 'none';
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 12000);
   try {
-    const res = await fetch('https://formsubmit.co/ajax/nick.webb@warwick.ac.uk', {
+    const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       body: new FormData(contactForm),
-      headers: { 'Accept': 'application/json' }
+      headers: { 'Accept': 'application/json' },
+      signal: controller.signal,
     });
-    if (res.ok) {
+    clearTimeout(timeout);
+    const data = await res.json();
+    if (data.success) {
       contactForm.reset();
       formSuccess.style.display = 'block';
       setTimeout(() => { formSuccess.style.display = 'none'; }, 5000);
     } else {
-      alert('Something went wrong. Please try again.');
+      formError.style.display = 'block';
     }
   } catch {
-    alert('Something went wrong. Please try again.');
+    clearTimeout(timeout);
+    formError.style.display = 'block';
   }
   btn.textContent = 'Send Message';
   btn.disabled = false;
