@@ -122,6 +122,24 @@ img { max-width: 100%; display: block; }
   color: var(--navy) !important;
 }
 
+.nav-social {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 0.75rem;
+}
+.nav-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  font-size: 1.15rem;
+  transition: color var(--transition);
+}
+.nav-social-link:hover {
+  color: var(--gold);
+}
+
 /* Hamburger */
 .hamburger {
   display: none;
@@ -516,6 +534,64 @@ img { max-width: 100%; display: block; }
   color: rgba(255,255,255,0.75);
 }
 
+/* ── OUR TEAM ── */
+.team {
+  background: var(--off-white);
+}
+.team .container {
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem 1.5rem;
+}
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.team-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e3e6ef, #cdd2e0);
+  border: 3px solid var(--gold);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.team-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+}
+.team-role {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  letter-spacing: 0.02em;
+}
+
+/* ── NOTABLE ALUMNI ── */
+.alumni {
+  background: var(--white);
+}
+.alumni .container {
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
 /* ── CONTACT ── */
 .contact {
   background: var(--off-white);
@@ -656,6 +732,7 @@ img { max-width: 100%; display: block; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .events-grid { grid-template-columns: 1fr; }
   .divisions-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(3, 1fr); }
   .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
   .contact-left .section-title { text-align: center; }
   .contact-left p { text-align: center; }
@@ -689,6 +766,11 @@ img { max-width: 100%; display: block; }
     padding: 0.6rem 1rem;
     font-size: 0.85rem;
   }
+  .nav-social {
+    justify-content: center;
+    margin: 0.5rem 0 0;
+    gap: 1rem;
+  }
   .logo-svg { width: 40px; height: 40px; }
   .hamburger { display: flex; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
@@ -698,6 +780,8 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 480px) {
   .stats-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 1.75rem 1rem; }
+  .team-photo { width: 110px; height: 110px; }
   .partners-grid { flex-direction: column; align-items: center; }
   .partner-card { width: 90%; }
   .contact-form { padding: 1.5rem; }

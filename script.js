@@ -79,7 +79,7 @@ document.addEventListener('click', e => {
 
 // ── SCROLL REVEAL ANIMATION ──
 const revealEls = document.querySelectorAll(
-  '.stat-card, .partner-card, .event-card, .division-card, .about-text, .section-intro, .contact-left, .contact-form'
+  '.stat-card, .partner-card, .event-card, .division-card, .team-card, .about-text, .section-intro, .contact-left, .contact-form'
 );
 revealEls.forEach(el => el.classList.add('reveal'));
 
