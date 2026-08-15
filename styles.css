@@ -475,6 +475,113 @@ img { max-width: 100%; display: block; }
   color: var(--text-light);
 }
 
+/* Events gallery */
+.events-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  margin-top: 1.75rem;
+}
+.gallery-item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 8px;
+  aspect-ratio: 4 / 3;
+  cursor: pointer;
+  box-shadow: 0 2px 14px rgba(26,39,68,0.10);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition);
+}
+.gallery-item:hover,
+.gallery-item:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(26,39,68,0.28);
+  outline: none;
+}
+.gallery-item:hover img,
+.gallery-item:focus-visible img {
+  transform: scale(1.05);
+}
+.gallery-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2rem 1.25rem 1.1rem;
+  text-align: left;
+  color: var(--white);
+  background: linear-gradient(to top, rgba(26,39,68,0.94) 0%, rgba(26,39,68,0.78) 55%, rgba(26,39,68,0) 100%);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform var(--transition), opacity var(--transition);
+}
+.gallery-item:hover .gallery-caption,
+.gallery-item:focus-visible .gallery-caption {
+  transform: translateY(0);
+  opacity: 1;
+}
+.gallery-caption h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--white);
+  margin-bottom: 0.15rem;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+.gallery-caption span {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--gold-light);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(26,39,68,0.9);
+  cursor: zoom-out;
+}
+.lightbox.open {
+  display: flex;
+}
+.lightbox-img {
+  max-width: 92vw;
+  max-height: 88vh;
+  border-radius: 8px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.5);
+  cursor: default;
+}
+.lightbox-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.75rem;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  color: var(--white);
+  font-size: 2.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+.lightbox-close:hover {
+  color: var(--gold);
+}
+
 /* ── DIVISIONS ── */
 .divisions {
   background: var(--white);
@@ -743,6 +850,7 @@ a.team-card:hover .team-photo {
 @media (max-width: 900px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .events-grid { grid-template-columns: 1fr; }
+  .events-gallery { grid-template-columns: 1fr; }
   .divisions-grid { grid-template-columns: repeat(2, 1fr); }
   .team-grid { grid-template-columns: repeat(3, 1fr); }
   .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
