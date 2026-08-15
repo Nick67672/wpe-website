@@ -54,6 +54,7 @@
         <li class="nav-social">
           <a href="https://www.instagram.com/warwickprivateequitysociety/?hl=en-gb" class="nav-social-link" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
           <a href="https://www.linkedin.com/company/warwick-private-equity-society/" class="nav-social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://chat.whatsapp.com/FiT1ONU9lSE67IH3333Oa9" class="nav-social-link" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         </li>
       </ul>
     </div>
@@ -128,10 +129,41 @@
           <p>Exclusive firm visits giving members a first-hand look at PE culture and operations.</p>
         </div>
         <div class="event-card">
-          <div class="event-icon"><i class="fa-solid fa-trophy"></i></div>
-          <h3>Case Competitions</h3>
-          <p>Test your skills in a realistic investment competition judged by industry professionals.</p>
+          <div class="event-icon"><i class="fa-solid fa-user-graduate"></i></div>
+          <h3>Careers Support</h3>
+          <p>Expert mentorship from our executive team to optimise your spring, summer and graduate programme applications.</p>
         </div>
+      </div>
+
+      <div class="events-gallery">
+        <a class="gallery-item" href="assets/events/keensight.jpeg">
+          <img src="assets/events/keensight.jpeg" alt="Keensight Capital — Office Visit &amp; Recruitment Event" loading="lazy" />
+          <div class="gallery-caption">
+            <h4>Keensight Capital</h4>
+            <span>Office Visit &amp; Recruitment Event</span>
+          </div>
+        </a>
+        <a class="gallery-item" href="assets/events/dartmouth.jpeg">
+          <img src="assets/events/dartmouth.jpeg" alt="Dartmouth Partners — Recruitment Panel &amp; Networking" loading="lazy" />
+          <div class="gallery-caption">
+            <h4>Dartmouth Partners</h4>
+            <span>Recruitment Panel &amp; Networking</span>
+          </div>
+        </a>
+        <a class="gallery-item" href="assets/events/richard-spencer.jpeg">
+          <img src="assets/events/richard-spencer.jpeg" alt="Richard Spencer — Goldman Sachs AM Partner" loading="lazy" />
+          <div class="gallery-caption">
+            <h4>Richard Spencer</h4>
+            <span>Goldman Sachs AM Partner</span>
+          </div>
+        </a>
+        <a class="gallery-item" href="assets/events/aravindh-suresh.jpeg">
+          <img src="assets/events/aravindh-suresh.jpeg" alt="Aravindh Suresh — Ex-Macquarie Private Equity Associate" loading="lazy" />
+          <div class="gallery-caption">
+            <h4>Aravindh Suresh</h4>
+            <span>Ex-Macquarie Private Equity Associate</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -369,6 +401,46 @@
   <!-- ── PROGRESS BAR ── -->
   <div id="scroll-progress"></div>
 
+  <!-- ── LIGHTBOX ── -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <img class="lightbox-img" src="" alt="" />
+  </div>
+
   <script src="script.js"></script>
+  <script>
+    (function () {
+      var lb = document.getElementById('lightbox');
+      if (!lb) return;
+      var lbImg = lb.querySelector('.lightbox-img');
+      var closeBtn = lb.querySelector('.lightbox-close');
+      function open(src, alt) {
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        lbImg.src = '';
+      }
+      document.querySelectorAll('.gallery-item').forEach(function (item) {
+        item.addEventListener('click', function (e) {
+          e.preventDefault();
+          var img = item.querySelector('img');
+          open(item.getAttribute('href'), img ? img.alt : '');
+        });
+      });
+      lb.addEventListener('click', function (e) {
+        if (e.target === lb || e.target === closeBtn) close();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lb.classList.contains('open')) close();
+      });
+    })();
+  </script>
 </body>
 </html>
