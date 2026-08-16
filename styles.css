@@ -219,7 +219,7 @@ img { max-width: 100%; display: block; }
 /* ── HERO ── */
 .hero {
   position: relative;
-  background: url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80') center center / cover no-repeat;
+  background: url('assets/hero.jpg') center center / cover no-repeat;
   color: var(--white);
   min-height: 100vh;
   padding-top: 0;
