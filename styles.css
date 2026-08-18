@@ -1032,3 +1032,20 @@ a.team-card:hover .team-photo {
   .partner-card { width: 90%; }
   .contact-form { padding: 1.5rem; }
 }
+
+/* ── Custom brand cursor (dark-blue circle) ─────────────────────
+   Pure CSS. A navy circle replaces the pointer site-wide and turns
+   gold over clickable elements. Text fields keep a caret and touch
+   devices fall back to the default cursor. Drawn as an inline SVG,
+   so no image file is required. */
+body {
+  cursor: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%3E%3Ccircle%20cx='12'%20cy='12'%20r='8'%20fill='%231B2B42'%20stroke='%23F5F3ED'%20stroke-width='2'/%3E%3C/svg%3E") 12 12, auto;
+}
+a, button, .btn, .nav-link, .nav-social-link, .gallery-item,
+.team-card, .stat-card, .alumni-logo, select, label, summary, [role="button"] {
+  cursor: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='26'%20height='26'%3E%3Ccircle%20cx='13'%20cy='13'%20r='9'%20fill='%23BA8A3A'%20stroke='%23F5F3ED'%20stroke-width='2'/%3E%3C/svg%3E") 13 13, pointer;
+}
+input, textarea { cursor: text; }
+@media (hover: none), (pointer: coarse) {
+  body, a, button, .btn, select, label { cursor: auto; }
+}
