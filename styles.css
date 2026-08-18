@@ -1,478 +1,1020 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Warwick Private Equity Society</title>
-  <link rel="icon" type="image/png" href="assets/wpe-logo.png" />
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    @media (max-width: 768px) {
-      .nav-links {
-        position: fixed;
-        top: 72px;
-        left: 0; right: 0;
-        background: rgba(255,255,255,0.98);
-        flex-direction: column;
-        align-items: stretch;
-        padding: 1rem;
-        gap: 0.25rem;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-        display: none;
-      }
-      .nav-links.open { display: flex; }
-      .nav-link--cta {
-        background: none !important;
-        color: #c9a84c !important;
-        border: none !important;
-        margin: 0 !important;
-        padding: 0.75rem 1rem !important;
-      }
-    }
-  </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-</head>
-<body>
+/* ── RESET & BASE ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <!-- ── NAVBAR ── -->
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-logo" data-section="hero">
-        <img src="assets/wpe-logo.png" alt="Warwick Private Equity Society" class="logo-svg" />
-        <span class="nav-brand">WARWICK PRIVATE EQUITY SOCIETY</span>
-      </a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#about"    class="nav-link" data-section="about">About Us</a></li>
-        <li><a href="#events"   class="nav-link" data-section="events">Events</a></li>
-        <li><a href="#divisions"class="nav-link" data-section="divisions">Divisions</a></li>
-        <li><a href="#team"     class="nav-link" data-section="team">Our Team</a></li>
-        <li><a href="#contact"  class="nav-link nav-link--cta" data-section="contact">Contact Us</a></li>
-        <li class="nav-social">
-          <a href="https://www.instagram.com/warwickprivateequitysociety/?hl=en-gb" class="nav-social-link" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/company/warwick-private-equity-society/" class="nav-social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="https://chat.whatsapp.com/FiT1ONU9lSE67IH3333Oa9" class="nav-social-link" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+:root {
+  /* ── Brand colours (WPE 26/27) ── */
+  --navy:        #1B2B42;
+  --navy-light:  #2A3E5C;
+  --gold:        #BA8A3A;
+  --light-gold:  #F7D9A4;
+  --gold-light:  #F7D9A4;   /* alias kept for existing references */
+  --off-white:   #F5F3ED;
+  --white:       #ffffff;
+  --text:        #24313f;
+  --text-light:  #667385;
 
-  <!-- ── HERO ── -->
-  <section id="hero" class="section hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 class="hero-title">Warwick Private Equity Society</h1>
-      <p class="hero-sub">Warwick's first and only society dedicated to Private Equity</p>
-      <a href="#about" class="btn btn-gold scroll-btn">Discover More</a>
-    </div>
-    <div class="hero-scroll-hint">
-      <span></span>
-    </div>
-  </section>
+  /* ── Typography ── */
+  --font-display:   'TT Firs Neue', 'Inter', system-ui, sans-serif;      /* titles / hero */
+  --font-secondary: 'Open Sauce Sans', 'Inter', system-ui, sans-serif;   /* labels / dates */
+  --font-body:      'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  <!-- ── ABOUT US ── -->
-  <section id="about" class="section about">
-    <div class="container">
-      <h2 class="section-title gold-underline">ABOUT US</h2>
-      <p class="about-text">
-        Our mission is to prepare Warwick students for a successful career in Private Equity by hosting
-        speakers and running technical workshops. We then partner with firms exposing them to high potential
-        internship and graduate scheme candidates through office visits and campus events.
-      </p>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <i class="fa-solid fa-users"></i>
-          <span class="stat-number" data-target="21">0</span>
-          <span class="stat-label">Executives</span>
-        </div>
-        <div class="stat-card">
-          <i class="fa-solid fa-calendar-days"></i>
-          <span class="stat-number" data-target="40">0</span>
-          <span class="stat-label">Events</span>
-        </div>
-        <div class="stat-card">
-          <i class="fa-solid fa-user-group"></i>
-          <span class="stat-number" data-target="1400">0</span>
-          <span class="stat-label">Followers</span>
-        </div>
-        <div class="stat-card">
-          <i class="fa-solid fa-handshake"></i>
-          <span class="stat-number" data-target="5">0</span>
-          <span class="stat-label">Partners</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  /* ── Radius ── */
+  --radius-sm: 6px;
+  --radius:    10px;
+  --radius-lg: 16px;
 
-  <!-- ── EVENTS ── -->
-  <section id="events" class="section events">
-    <div class="container">
-      <h2 class="section-title gold-underline">OUR EVENTS</h2>
-      <p class="section-intro">From speaker panels to technical workshops, we run a wide range of events throughout the academic year.</p>
-      <div class="events-grid">
-        <div class="event-card">
-          <div class="event-icon"><i class="fa-solid fa-microphone-lines"></i></div>
-          <h3>Speaker Panels</h3>
-          <p>Industry professionals share their journeys into Private Equity and offer candid career advice.</p>
-        </div>
-        <div class="event-card">
-          <div class="event-icon"><i class="fa-solid fa-chart-line"></i></div>
-          <h3>Technical Workshops</h3>
-          <p>Hands-on sessions covering LBO modelling, due diligence, and deal structuring.</p>
-        </div>
-        <div class="event-card">
-          <div class="event-icon"><i class="fa-solid fa-building-columns"></i></div>
-          <h3>Office Visits</h3>
-          <p>Exclusive firm visits giving members a first-hand look at PE culture and operations.</p>
-        </div>
-        <div class="event-card">
-          <div class="event-icon"><i class="fa-solid fa-user-graduate"></i></div>
-          <h3>Careers Support</h3>
-          <p>Expert mentorship from our executive team to optimise your spring, summer and graduate programme applications.</p>
-        </div>
-      </div>
+  /* ── Spacing scale ── */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: 6rem;
 
-      <div class="events-gallery">
-        <a class="gallery-item" href="assets/events/keensight.jpeg">
-          <img src="assets/events/keensight.jpeg" alt="Keensight Capital — Office Visit &amp; Recruitment Event" loading="lazy" />
-          <div class="gallery-caption">
-            <h4>Keensight Capital</h4>
-            <span>Office Visit &amp; Recruitment Event</span>
-          </div>
-        </a>
-        <a class="gallery-item" href="assets/events/dartmouth.jpeg">
-          <img src="assets/events/dartmouth.jpeg" alt="Dartmouth Partners — Recruitment Panel &amp; Networking" loading="lazy" />
-          <div class="gallery-caption">
-            <h4>Dartmouth Partners</h4>
-            <span>Recruitment Panel &amp; Networking</span>
-          </div>
-        </a>
-        <a class="gallery-item" href="assets/events/richard-spencer.jpeg">
-          <img src="assets/events/richard-spencer.jpeg" alt="Richard Spencer — Goldman Sachs AM Partner" loading="lazy" />
-          <div class="gallery-caption">
-            <h4>Richard Spencer</h4>
-            <span>Goldman Sachs AM Partner</span>
-          </div>
-        </a>
-        <a class="gallery-item" href="assets/events/aravindh-suresh.jpeg">
-          <img src="assets/events/aravindh-suresh.jpeg" alt="Aravindh Suresh — Ex-Macquarie Private Equity Associate" loading="lazy" />
-          <div class="gallery-caption">
-            <h4>Aravindh Suresh</h4>
-            <span>Ex-Macquarie Private Equity Associate</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
+  /* ── Layout ── */
+  --nav-h:  72px;
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-  <!-- ── DIVISIONS ── -->
-  <section id="divisions" class="section divisions">
-    <div class="container">
-      <h2 class="section-title gold-underline">OUR DIVISIONS</h2>
-      <p class="section-intro">Our society is structured into specialist divisions to give members focused, career-relevant experience.</p>
-      <div class="divisions-grid">
-        <div class="division-card">
-          <div class="division-icon"><i class="fa-solid fa-briefcase"></i></div>
-          <h3>Buyouts</h3>
-          <p>Covers traditional private equity investments. Trains members in Leveraged Buyouts and the process of a deal, creating LBO reports on recent transactions.</p>
-        </div>
-        <div class="division-card">
-          <div class="division-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
-          <h3>Private Credit</h3>
-          <p>Prepares members for a career in Private Credit, learning industry trends, what lenders look for, and how Private Credit interacts with the wider buyside.</p>
-        </div>
-        <div class="division-card">
-          <div class="division-icon"><i class="fa-solid fa-rocket"></i></div>
-          <h3>Growth Equity</h3>
-          <p>Focuses on investment into smaller high-growth companies, teaching members how to navigate valuations when less information is available.</p>
-        </div>
-        <div class="division-card">
-          <div class="division-icon"><i class="fa-solid fa-building"></i></div>
-          <h3>Real Assets</h3>
-          <p>Encompasses Infrastructure and Real Estate Private Equity, with a focus on long time horizons and stability of returns.</p>
-        </div>
-        <div class="division-card">
-          <div class="division-icon"><i class="fa-solid fa-newspaper"></i></div>
-          <h3>Insights</h3>
-          <p>Ensures our members are commercially aware and updated on market developments, while also producing in-depth industry reports.</p>
-        </div>
-        <div class="division-card">
-          <div class="division-icon"><i class="fa-solid fa-user-tie"></i></div>
-          <h3>Careers</h3>
-          <p>Organises panel events, CV clinics and mentorship schemes. Our Careers team ensures our members are well-prepared to pursue their internship and graduate ambitions.</p>
-        </div>
-        <div class="division-card">
-          <div class="division-icon"><i class="fa-solid fa-handshake"></i></div>
-          <h3>Outreach &amp; Partnerships</h3>
-          <p>Builds relationships with partner firms and brings speakers to Warwick from across the buyside.</p>
-        </div>
-        <div class="division-card">
-          <div class="division-icon"><i class="fa-solid fa-bullhorn"></i></div>
-          <h3>Marketing</h3>
-          <p>Grows the reach and presence of the society, ensuring members are always aware of upcoming events and opportunities.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+/* ── Brand fonts ──────────────────────────────────────────────
+   Inter loads from Google Fonts (see index.html <head>).
+   TT Firs Neue and Open Sauce are NOT yet supplied. To add them:
+   drop the font files into assets/fonts/ and uncomment the blocks
+   below — the --font-display / --font-secondary variables above
+   will then pick them up automatically across the whole site.
 
-  <!-- ── OUR TEAM ── -->
-  <section id="team" class="section team">
-    <div class="container">
-      <h2 class="section-title gold-underline">OUR TEAM</h2>
-      <p class="section-intro">Meet the people behind Warwick Private Equity Society.</p>
-      <div class="team-grid">
-        <div class="team-row">
-        <a class="team-card" href="https://www.linkedin.com/in/aditya-jayaram/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/aditya.jpeg" alt="Aditya Jayaram" /></div>
-          <h3 class="team-name">Aditya Jayaram</h3>
-          <p class="team-role">Co-President</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/nick-webb-warwick/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/nick.png" alt="Nick Webb" /></div>
-          <h3 class="team-name">Nick Webb</h3>
-          <p class="team-role">Co-President</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/aaryanbhogra/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/aaryan.jpeg" alt="Aaryan Bhogra" /></div>
-          <h3 class="team-name">Aaryan Bhogra</h3>
-          <p class="team-role">Senior Advisor</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/sahanna-nanda-328768220/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/sahanna.jpeg" alt="Sahanna Nanda" /></div>
-          <h3 class="team-name">Sahanna Nanda</h3>
-          <p class="team-role">Secretary</p>
-        </a>
-        </div>
-        <div class="team-row">
-        <a class="team-card" href="https://www.linkedin.com/in/ashutosh-chauhan-57611a375/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/ashutosh.png" alt="Ashutosh Chauhan" /></div>
-          <h3 class="team-name">Ashutosh Chauhan</h3>
-          <p class="team-role">Treasurer</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/david-akande13/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/david.jpeg" alt="David Akande" /></div>
-          <h3 class="team-name">David Akande</h3>
-          <p class="team-role">Head of Buyouts</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/aashi-shah-bba23020b/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/aashi.jpeg" alt="Aashi Shah" /></div>
-          <h3 class="team-name">Aashi Shah</h3>
-          <p class="team-role">Head of Growth Equity</p>
-        </a>
-        </div>
-        <div class="team-row">
-        <a class="team-card" href="https://www.linkedin.com/in/cohen-djamson-55b637154/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/cohen.jpeg" alt="Cohen Djamson" /></div>
-          <h3 class="team-name">Cohen Djamson</h3>
-          <p class="team-role">Head of Private Credit</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/theogales/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/theo.jpeg" alt="Theo Gales Dobson" /></div>
-          <h3 class="team-name">Theo Gales Dobson</h3>
-          <p class="team-role">Head of Real Assets</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/fares-sukkar-32371837b/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/fares.png" alt="Fares Sukkar" /></div>
-          <h3 class="team-name">Fares Sukkar</h3>
-          <p class="team-role">Head of Law</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/simibodh/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/simi.jpeg" alt="Simi Bodh" /></div>
-          <h3 class="team-name">Simi Bodh</h3>
-          <p class="team-role">Outreach &amp; Partnerships Executive</p>
-        </a>
-        </div>
-        <div class="team-row">
-        <a class="team-card" href="https://www.linkedin.com/in/calixta-yun-martos/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/calixta.png" alt="Calixta Yun" /></div>
-          <h3 class="team-name">Calixta Yun</h3>
-          <p class="team-role">Outreach &amp; Partnerships Executive</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/keya-mehta22/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/keya.jpeg" alt="Keya Mehta" /></div>
-          <h3 class="team-name">Keya Mehta</h3>
-          <p class="team-role">Outreach &amp; Partnerships Executive</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/matt-smith-326719389/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/matt.jpeg" alt="Matt Smith" /></div>
-          <h3 class="team-name">Matt Smith</h3>
-          <p class="team-role">Careers Executive</p>
-        </a>
-        </div>
-        <div class="team-row">
-        <a class="team-card" href="https://www.linkedin.com/in/shaan-naha/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/shaan.png" alt="Shaan Naha" /></div>
-          <h3 class="team-name">Shaan Naha</h3>
-          <p class="team-role">Careers Executive</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/shaylan-roy-893223246/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/shaylan.jpeg" alt="Shaylan Roy" /></div>
-          <h3 class="team-name">Shaylan Roy</h3>
-          <p class="team-role">Insights Executive</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/faeez-ogunwolu/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/faeez.jpeg" alt="Faeez Ogunwolu" /></div>
-          <h3 class="team-name">Faeez Ogunwolu</h3>
-          <p class="team-role">Insights Executive</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/nikhil-dewan1/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/nikhil.jpeg" alt="Nikhil Dewan" /></div>
-          <h3 class="team-name">Nikhil Dewan</h3>
-          <p class="team-role">Insights Executive</p>
-        </a>
-        </div>
-        <div class="team-row">
-        <a class="team-card" href="https://www.linkedin.com/in/aarshiyabansal/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/aarshiya.jpeg" alt="Aarshiya Bansal" /></div>
-          <h3 class="team-name">Aarshiya Bansal</h3>
-          <p class="team-role">Marketing Executive</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/jaskiran-munde-aa8322317/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/jaskiran.jpeg" alt="Jaskiran Munde" /></div>
-          <h3 class="team-name">Jaskiran Munde</h3>
-          <p class="team-role">Marketing Executive</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/ayamlamichhane/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/ayam.png" alt="Ayam Lamichane" /></div>
-          <h3 class="team-name">Ayam Lamichane</h3>
-          <p class="team-role">Marketing Executive</p>
-        </a>
-        </div>
-      </div>
-    </div>
-  </section>
+@font-face {
+  font-family: 'TT Firs Neue';
+  src: url('assets/fonts/TTFirsNeue-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'TT Firs Neue';
+  src: url('assets/fonts/TTFirsNeue-Bold.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Open Sauce Sans';
+  src: url('assets/fonts/OpenSauceSans-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Open Sauce Sans';
+  src: url('assets/fonts/OpenSauceSans-Bold.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+──────────────────────────────────────────────────────────────── */
 
-  <!-- ── ALUMNI DESTINATIONS ── -->
-  <section id="alumni" class="section alumni">
-    <div class="container">
-      <h2 class="section-title gold-underline">ALUMNI DESTINATIONS</h2>
-      <p class="section-intro">Where our members have gone on to build their careers.</p>
-      <div class="team-grid">
-        <a class="team-card" href="https://www.linkedin.com/in/suraj-shah-25m4/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/suraj.png" alt="Suraj Shah" /></div>
-          <h3 class="team-name">Suraj Shah</h3>
-          <p class="team-role">Campbell Lutyens</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/saevukatwal/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/saevuk.jpeg" alt="Saevuk Atwal" /></div>
-          <h3 class="team-name">Saevuk Atwal</h3>
-          <p class="team-role">Sixth Street</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/kenzo-nogbou-de-groot/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/kenzo.jpeg" alt="Kenzo Groot" /></div>
-          <h3 class="team-name">Kenzo Groot</h3>
-          <p class="team-role">J.P. Morgan</p>
-        </a>
-        <a class="team-card" href="https://www.linkedin.com/in/daniela-figueredo-0a03591b1/" target="_blank" rel="noopener noreferrer">
-          <div class="team-photo"><img src="assets/daniela.jpeg" alt="Daniela Figueredo" /></div>
-          <h3 class="team-name">Daniela Figueredo</h3>
-          <p class="team-role">Bank of America</p>
-        </a>
-      </div>
+html { scroll-behavior: smooth; font-size: 16px; }
 
-      <div class="alumni-logos">
-        <div class="alumni-logo"><img src="assets/alumni/blackstone.png" alt="Blackstone" loading="lazy" /></div>
-        <div class="alumni-logo"><img src="assets/alumni/goldman-sachs.png" alt="Goldman Sachs" loading="lazy" /></div>
-        <div class="alumni-logo"><img src="assets/alumni/jpmorgan.png" alt="J.P. Morgan" loading="lazy" /></div>
-        <div class="alumni-logo"><img src="assets/alumni/bank-of-america.png" alt="Bank of America" loading="lazy" /></div>
-        <div class="alumni-logo"><img src="assets/alumni/sixth-street.png" alt="Sixth Street" loading="lazy" /></div>
-        <div class="alumni-logo"><img src="assets/alumni/morgan-stanley.png" alt="Morgan Stanley" loading="lazy" /></div>
-        <div class="alumni-logo"><img src="assets/alumni/ik-partners.png" alt="IK Partners" loading="lazy" /></div>
-        <div class="alumni-logo"><img src="assets/alumni/omers.png" alt="OMERS" loading="lazy" /></div>
-        <div class="alumni-logo"><img src="assets/alumni/advent.png" alt="Advent International" loading="lazy" /></div>
-        <div class="alumni-logo"><img src="assets/alumni/campbell-lutyens.png" alt="Campbell Lutyens" loading="lazy" /></div>
-        <div class="alumni-logo"><img src="assets/alumni/cdr.png" alt="Clayton, Dubilier &amp; Rice" loading="lazy" /></div>
-        <div class="alumni-logo"><img src="assets/alumni/pictet.png" alt="Pictet Group" loading="lazy" /></div>
-      </div>
-    </div>
-  </section>
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+}
 
-  <!-- ── CONTACT ── -->
-  <section id="contact" class="section contact">
-    <div class="container contact-inner">
-      <div class="contact-left">
-        <h2 class="section-title gold-underline">CONTACT US</h2>
-        <p>Whether you're a student looking to get involved or a firm interested in partnering with us, we'd love to hear from you.</p>
-        <ul class="contact-details">
-          <li><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/company/warwick-private-equity-society/" target="_blank">Warwick PE Society</a></li>
-          <li><i class="fa-brands fa-instagram"></i><a href="https://www.instagram.com/warwickprivateequitysociety/?hl=en-gb" target="_blank">@warwickprivateequitysociety</a></li>
-        </ul>
-      </div>
-      <form class="contact-form" id="contact-form" method="POST">
-        <input type="hidden" name="access_key" value="015ee353-427e-4680-8a58-de8bd45fbc03" />
-        <input type="hidden" name="subject" value="New WPE Website Enquiry" />
-        <input type="hidden" name="redirect" value="false" />
-        <div class="form-group">
-          <input type="text" name="name" placeholder="Your Name" required />
-        </div>
-        <div class="form-group">
-          <input type="email" name="email" placeholder="Your Email" required />
-        </div>
-        <div class="form-group">
-          <select name="type">
-            <option value="" disabled selected>I am a…</option>
-            <option value="Student">Student</option>
-            <option value="Firm / Recruiter">Firm / Recruiter</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <textarea name="message" rows="5" placeholder="Your message…" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-gold full-width">Send Message</button>
-        <p class="form-success" id="form-success">Message sent! We'll be in touch soon.</p>
-        <p class="form-error" id="form-error">Something went wrong — please try again or email us directly.</p>
-      </form>
-    </div>
-  </section>
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
 
+/* ── SCROLL PROGRESS BAR ── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--gold);
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
 
-  <!-- ── PROGRESS BAR ── -->
-  <div id="scroll-progress"></div>
+/* ── NAVBAR ── */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(186,138,58,0.2);
+  z-index: 1000;
+  transition: box-shadow var(--transition), background var(--transition);
+}
+#navbar.scrolled {
+  box-shadow: 0 2px 20px rgba(27,43,66,0.12);
+}
 
-  <!-- ── LIGHTBOX ── -->
-  <div id="lightbox" class="lightbox" aria-hidden="true">
-    <button class="lightbox-close" aria-label="Close">&times;</button>
-    <img class="lightbox-img" src="" alt="" />
-  </div>
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
 
-  <script src="script.js"></script>
-  <script>
-    (function () {
-      var lb = document.getElementById('lightbox');
-      if (!lb) return;
-      var lbImg = lb.querySelector('.lightbox-img');
-      var closeBtn = lb.querySelector('.lightbox-close');
-      function open(src, alt) {
-        lbImg.src = src;
-        lbImg.alt = alt || '';
-        lb.classList.add('open');
-        lb.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-      function close() {
-        lb.classList.remove('open');
-        lb.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-        lbImg.src = '';
-      }
-      document.querySelectorAll('.gallery-item').forEach(function (item) {
-        item.addEventListener('click', function (e) {
-          e.preventDefault();
-          var img = item.querySelector('img');
-          open(item.getAttribute('href'), img ? img.alt : '');
-        });
-      });
-      lb.addEventListener('click', function (e) {
-        if (e.target === lb || e.target === closeBtn) close();
-      });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && lb.classList.contains('open')) close();
-      });
-    })();
-  </script>
-</body>
-</html>
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+.logo-svg { height: 38px; width: auto; }
+.nav-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  max-width: 180px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+}
+
+.nav-link {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--navy);
+  padding: 0.5rem 0.9rem;
+  border-radius: 4px;
+  transition: color var(--transition), background var(--transition);
+  white-space: nowrap;
+}
+.nav-link:hover, .nav-link.active {
+  color: var(--gold);
+}
+.nav-link.active {
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: calc(0.5rem - 2px);
+}
+.nav-link--cta {
+  background: var(--navy);
+  color: var(--white) !important;
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+}
+.nav-link--cta:hover {
+  background: var(--gold) !important;
+  color: var(--navy) !important;
+}
+.nav-link--cta.active {
+  border-bottom: none;
+  background: var(--gold);
+  color: var(--navy) !important;
+}
+
+.nav-social {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 0.75rem;
+}
+.nav-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  font-size: 1.15rem;
+  transition: color var(--transition);
+}
+.nav-social-link:hover {
+  color: var(--gold);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── SECTIONS ── */
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  padding-top: var(--nav-h);
+}
+
+.container {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+.gold-underline::after {
+  content: '';
+  display: block;
+  height: 3px;
+  background: var(--gold);
+  margin-top: 6px;
+  border-radius: 2px;
+}
+.gold-underline.light { color: var(--white); }
+.gold-underline.light::after { background: var(--white); }
+
+.section-title-wrap {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-intro {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 1.05rem;
+  max-width: 640px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  background: url('assets/hero.jpg') center center / cover no-repeat;
+  color: var(--white);
+  min-height: 100vh;
+  padding-top: 0;
+  flex-direction: column;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(27,43,66,0.72);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 2rem;
+  animation: fadeUp 1s ease both;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  margin-bottom: 2.5rem;
+  opacity: 0.92;
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.85rem 2.25rem;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+}
+.btn-gold:hover {
+  background: transparent;
+  color: var(--gold);
+  border-color: var(--gold);
+}
+.btn.full-width { width: 100%; text-align: center; }
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.hero-scroll-hint span {
+  display: block;
+  width: 22px;
+  height: 36px;
+  border: 2px solid rgba(255,255,255,0.6);
+  border-radius: 12px;
+  position: relative;
+}
+.hero-scroll-hint span::after {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 8px;
+  background: var(--gold);
+  border-radius: 2px;
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollBob 1.6s ease-in-out infinite;
+}
+
+/* ── ABOUT ── */
+.about {
+  background: var(--white);
+}
+.about .container {
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.about-text {
+  max-width: 700px;
+  margin: 0 auto 3.5rem;
+  font-size: 1.08rem;
+  line-height: 1.85;
+  color: var(--text);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.stat-card {
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 8px;
+  padding: 2.5rem 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+  cursor: default;
+}
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(27,43,66,0.2);
+}
+.stat-card i {
+  font-size: 2rem;
+  color: var(--gold);
+  margin-bottom: 0.25rem;
+}
+.stat-number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2.4rem;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-label {
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+}
+
+/* ── PARTNERS ── */
+.partners {
+  background: var(--navy);
+  color: var(--white);
+}
+.partners .container {
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.partners-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 3rem 0 2.5rem;
+}
+.partner-card {
+  background: var(--white);
+  border-radius: 8px;
+  width: 200px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.partner-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+.partner-card img {
+  max-height: 60px;
+  object-fit: contain;
+}
+.partner-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--navy);
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+.partners-cta-text {
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  opacity: 0.85;
+}
+.partners .btn-gold:hover {
+  background: transparent;
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* ── EVENTS ── */
+.events {
+  background: var(--off-white);
+}
+.events .container {
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  text-align: left;
+}
+.event-card {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 2rem 1.75rem;
+  border-left: 4px solid var(--gold);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(27,43,66,0.1);
+}
+.event-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--navy);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.event-icon i {
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+.event-card h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--navy);
+  margin-bottom: 0.6rem;
+}
+.event-card p {
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: var(--text-light);
+}
+
+/* Events gallery */
+.events-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  margin-top: 1.75rem;
+}
+.gallery-item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 8px;
+  aspect-ratio: 4 / 3;
+  cursor: pointer;
+  box-shadow: 0 2px 14px rgba(27,43,66,0.10);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition);
+}
+.gallery-item:hover,
+.gallery-item:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(27,43,66,0.28);
+  outline: none;
+}
+.gallery-item:hover img,
+.gallery-item:focus-visible img {
+  transform: scale(1.05);
+}
+.gallery-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2rem 1.25rem 1.1rem;
+  text-align: left;
+  color: var(--white);
+  background: linear-gradient(to top, rgba(27,43,66,0.94) 0%, rgba(27,43,66,0.78) 55%, rgba(27,43,66,0) 100%);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform var(--transition), opacity var(--transition);
+}
+.gallery-item:hover .gallery-caption,
+.gallery-item:focus-visible .gallery-caption {
+  transform: translateY(0);
+  opacity: 1;
+}
+.gallery-caption h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--white);
+  margin-bottom: 0.15rem;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+.gallery-caption span {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--gold-light);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(27,43,66,0.9);
+  cursor: zoom-out;
+}
+.lightbox.open {
+  display: flex;
+}
+.lightbox-img {
+  max-width: 92vw;
+  max-height: 88vh;
+  border-radius: 8px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.5);
+  cursor: default;
+}
+.lightbox-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.75rem;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  color: var(--white);
+  font-size: 2.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+.lightbox-close:hover {
+  color: var(--gold);
+}
+
+/* ── DIVISIONS ── */
+.divisions {
+  background: var(--white);
+}
+.divisions .container {
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.divisions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  text-align: center;
+}
+.division-card {
+  background: var(--navy);
+  border-radius: 8px;
+  padding: 2rem 1.25rem;
+  color: var(--white);
+  transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.division-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(27,43,66,0.25);
+}
+.division-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(186,138,58,0.15);
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.division-icon i {
+  color: var(--gold);
+  font-size: 1.1rem;
+}
+.division-card h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.division-card p {
+  font-size: 0.86rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.75);
+}
+
+/* ── OUR TEAM ── */
+.team {
+  background: var(--off-white);
+}
+.team .container {
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem 1.5rem;
+}
+/* Team section: honeycomb 4-3-4-3 rows (alumni grid unaffected) */
+.team .team-grid {
+  display: block;
+}
+.team-row {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.team-row:last-child {
+  margin-bottom: 0;
+}
+.team-row .team-card {
+  width: 220px;
+  flex: 0 0 auto;
+}
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+}
+a.team-card:hover {
+  transform: translateY(-4px);
+}
+a.team-card:hover .team-name {
+  color: var(--gold);
+}
+a.team-card:hover .team-photo {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+.team-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: var(--off-white);
+  border: 3px solid var(--gold);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.team-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+}
+.team-role {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  letter-spacing: 0.02em;
+}
+
+/* ── NOTABLE ALUMNI ── */
+.alumni {
+  background: var(--white);
+}
+.alumni .container {
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.alumni-logos {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 200px));
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+.alumni-logo {
+  background: var(--white);
+  border: 1px solid rgba(27,43,66,0.10);
+  border-radius: 8px;
+  width: 100%;
+  height: 118px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.1rem 1.4rem;
+  box-shadow: 0 1px 3px rgba(27,43,66,0.05);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.alumni-logo:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(27,43,66,0.18);
+}
+.alumni-logo img {
+  max-width: 140px;
+  max-height: 64px;
+  object-fit: contain;
+}
+
+/* ── CONTACT ── */
+.contact {
+  background: var(--off-white);
+}
+.contact .container {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 5rem;
+  align-items: start;
+}
+.contact-left .section-title { text-align: left; }
+.contact-left p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+}
+.contact-details {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.contact-details li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+}
+.contact-details i {
+  color: var(--gold);
+  font-size: 1.1rem;
+  width: 20px;
+  text-align: center;
+}
+.contact-details a {
+  color: var(--navy);
+  font-weight: 500;
+  transition: color var(--transition);
+}
+.contact-details a:hover { color: var(--gold); }
+
+.contact-form {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 24px rgba(27,43,66,0.08);
+}
+.form-group { margin-bottom: 1.25rem; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--white);
+  transition: border-color var(--transition);
+  resize: vertical;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.form-success {
+  display: none;
+  text-align: center;
+  color: #2e7d4f;
+  font-weight: 600;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.form-error {
+  display: none;
+  text-align: center;
+  color: #c0392b;
+  font-weight: 600;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--navy);
+  color: var(--white);
+  padding: 3rem 2rem;
+}
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.footer-logo { width: 70px; height: 70px; }
+.footer-text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+.footer-sub {
+  font-size: 0.8rem;
+  opacity: 0.55;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollBob {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+  50%       { transform: translateX(-50%) translateY(10px); opacity: 0.4; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .events-grid { grid-template-columns: 1fr; }
+  .events-gallery { grid-template-columns: 1fr; }
+  .divisions-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(3, 1fr); }
+  .alumni-logos { grid-template-columns: repeat(3, minmax(0, 200px)); }
+  .team .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem 1.5rem;
+  }
+  .team-row { display: contents; }
+  .team-row .team-card { width: auto; }
+  .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .contact-left .section-title { text-align: center; }
+  .contact-left p { text-align: center; }
+  .contact-details { align-items: center; }
+}
+
+@media (max-width: 768px) {
+  .nav-brand { display: none; }
+  .nav-links {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0; right: 0;
+    background: rgba(255,255,255,0.98);
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    gap: 0.5rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    transform: translateY(-120%);
+    transition: transform var(--transition);
+    backdrop-filter: blur(10px);
+  }
+  .nav-links.open { transform: translateY(0); }
+  .nav-link { padding: 0.75rem 1rem; font-size: 0.95rem; width: 100%; }
+  .nav-link--cta {
+    background: none !important;
+    color: var(--gold) !important;
+    border: 1.5px solid var(--gold);
+    margin: 0.25rem 1rem 0;
+    width: calc(100% - 2rem);
+    text-align: center;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+  .nav-social {
+    justify-content: center;
+    margin: 0.5rem 0 0;
+    gap: 1rem;
+  }
+  .logo-svg { height: 32px; width: auto; }
+  .hamburger { display: flex; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .section-title { font-size: 1.5rem; }
+  .hero-scroll-hint { bottom: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 1.75rem 1rem; }
+  .team .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem 1rem;
+  }
+  .team-photo { width: 110px; height: 110px; }
+  .alumni-logos { grid-template-columns: repeat(2, 1fr); }
+  .alumni-logo { height: 96px; padding: 0.9rem; }
+  .alumni-logo img { max-width: 100%; max-height: 52px; }
+  .partners-grid { flex-direction: column; align-items: center; }
+  .partner-card { width: 90%; }
+  .contact-form { padding: 1.5rem; }
+}
