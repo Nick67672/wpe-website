@@ -655,22 +655,22 @@ img { max-width: 100%; display: block; }
   grid-template-columns: repeat(4, 1fr);
   gap: 2.5rem 1.5rem;
 }
-/* Team section: staggered 4-3-4-3 rows (alumni grid unaffected) */
+/* Team section: honeycomb 4-3-4-3 rows (alumni grid unaffected) */
 .team .team-grid {
+  display: block;
+}
+.team-row {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 2.5rem 1.5rem;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
 }
-.team .team-grid .team-card {
-  flex: 0 0 calc((100% - 3 * 1.5rem) / 4);
-  max-width: calc((100% - 3 * 1.5rem) / 4);
+.team-row:last-child {
+  margin-bottom: 0;
 }
-.team .team-grid .row-break {
-  flex-basis: 100%;
-  height: 0;
-  margin: 0;
-  padding: 0;
+.team-row .team-card {
+  width: 220px;
+  flex: 0 0 auto;
 }
 .team-card {
   display: flex;
@@ -900,11 +900,13 @@ a.team-card:hover .team-photo {
   .divisions-grid { grid-template-columns: repeat(2, 1fr); }
   .team-grid { grid-template-columns: repeat(3, 1fr); }
   .alumni-logos { grid-template-columns: repeat(3, minmax(0, 200px)); }
-  .team .team-grid .row-break { display: none; }
-  .team .team-grid .team-card {
-    flex: 0 0 calc((100% - 2 * 1.5rem) / 3);
-    max-width: calc((100% - 2 * 1.5rem) / 3);
+  .team .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem 1.5rem;
   }
+  .team-row { display: contents; }
+  .team-row .team-card { width: auto; }
   .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
   .contact-left .section-title { text-align: center; }
   .contact-left p { text-align: center; }
@@ -954,11 +956,8 @@ a.team-card:hover .team-photo {
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .team-grid { grid-template-columns: repeat(2, 1fr); gap: 1.75rem 1rem; }
   .team .team-grid {
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.75rem 1rem;
-  }
-  .team .team-grid .team-card {
-    flex: 0 0 calc((100% - 1rem) / 2);
-    max-width: calc((100% - 1rem) / 2);
   }
   .team-photo { width: 110px; height: 110px; }
   .alumni-logos { grid-template-columns: repeat(2, 1fr); }
