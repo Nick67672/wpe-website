@@ -2,22 +2,73 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --navy:   #1a2744;
-  --navy-light: #253660;
-  --gold:   #c9a84c;
-  --gold-light: #dfc278;
-  --white:  #ffffff;
-  --off-white: #f5f6fa;
-  --text:   #2c2c2c;
-  --text-light: #666;
+  /* ── Brand colours (WPE 26/27) ── */
+  --navy:        #1B2B42;
+  --navy-light:  #2A3E5C;
+  --gold:        #BA8A3A;
+  --light-gold:  #F7D9A4;
+  --gold-light:  #F7D9A4;   /* alias kept for existing references */
+  --off-white:   #F5F3ED;
+  --white:       #ffffff;
+  --text:        #24313f;
+  --text-light:  #667385;
+
+  /* ── Typography ── */
+  --font-display:   'TT Firs Neue', 'Inter', system-ui, sans-serif;      /* titles / hero */
+  --font-secondary: 'Open Sauce Sans', 'Inter', system-ui, sans-serif;   /* labels / dates */
+  --font-body:      'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* ── Radius ── */
+  --radius-sm: 6px;
+  --radius:    10px;
+  --radius-lg: 16px;
+
+  /* ── Spacing scale ── */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: 6rem;
+
+  /* ── Layout ── */
   --nav-h:  72px;
   --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ── Brand fonts ──────────────────────────────────────────────
+   Inter loads from Google Fonts (see index.html <head>).
+   TT Firs Neue and Open Sauce are NOT yet supplied. To add them:
+   drop the font files into assets/fonts/ and uncomment the blocks
+   below — the --font-display / --font-secondary variables above
+   will then pick them up automatically across the whole site.
+
+@font-face {
+  font-family: 'TT Firs Neue';
+  src: url('assets/fonts/TTFirsNeue-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'TT Firs Neue';
+  src: url('assets/fonts/TTFirsNeue-Bold.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Open Sauce Sans';
+  src: url('assets/fonts/OpenSauceSans-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Open Sauce Sans';
+  src: url('assets/fonts/OpenSauceSans-Bold.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+──────────────────────────────────────────────────────────────── */
+
 html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--font-body);
   color: var(--text);
   background: var(--white);
   overflow-x: hidden;
@@ -32,7 +83,7 @@ img { max-width: 100%; display: block; }
   top: 0; left: 0;
   height: 3px;
   width: 0%;
-  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  background: var(--gold);
   z-index: 9999;
   transition: width 0.1s linear;
 }
@@ -44,12 +95,12 @@ img { max-width: 100%; display: block; }
   height: var(--nav-h);
   background: rgba(255,255,255,0.97);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(201,168,76,0.2);
+  border-bottom: 1px solid rgba(186,138,58,0.2);
   z-index: 1000;
   transition: box-shadow var(--transition), background var(--transition);
 }
 #navbar.scrolled {
-  box-shadow: 0 2px 20px rgba(26,39,68,0.12);
+  box-shadow: 0 2px 20px rgba(27,43,66,0.12);
 }
 
 .nav-inner {
@@ -69,9 +120,9 @@ img { max-width: 100%; display: block; }
   gap: 0.75rem;
   flex-shrink: 0;
 }
-.logo-svg { width: 48px; height: 48px; }
+.logo-svg { height: 38px; width: auto; }
 .nav-brand {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.78rem;
   color: var(--gold);
@@ -88,7 +139,7 @@ img { max-width: 100%; display: block; }
 }
 
 .nav-link {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.82rem;
   letter-spacing: 0.04em;
@@ -180,7 +231,7 @@ img { max-width: 100%; display: block; }
 }
 
 .section-title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-weight: 800;
   font-size: 2rem;
   letter-spacing: 0.1em;
@@ -228,7 +279,7 @@ img { max-width: 100%; display: block; }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(26,39,68,0.78) 0%, rgba(26,39,68,0.55) 60%, rgba(10,15,30,0.75) 100%);
+  background: rgba(27,43,66,0.72);
 }
 .hero-content {
   position: relative;
@@ -238,7 +289,7 @@ img { max-width: 100%; display: block; }
   animation: fadeUp 1s ease both;
 }
 .hero-title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-weight: 800;
   font-size: clamp(2rem, 5vw, 4rem);
   line-height: 1.1;
@@ -255,7 +306,7 @@ img { max-width: 100%; display: block; }
 
 .btn {
   display: inline-block;
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 0.08em;
@@ -344,7 +395,7 @@ img { max-width: 100%; display: block; }
 }
 .stat-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(26,39,68,0.2);
+  box-shadow: 0 12px 32px rgba(27,43,66,0.2);
 }
 .stat-card i {
   font-size: 2rem;
@@ -352,14 +403,14 @@ img { max-width: 100%; display: block; }
   margin-bottom: 0.25rem;
 }
 .stat-number {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-weight: 800;
   font-size: 2.4rem;
   color: var(--gold);
   line-height: 1;
 }
 .stat-label {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-secondary);
   font-weight: 600;
   font-size: 0.85rem;
   letter-spacing: 0.08em;
@@ -404,7 +455,7 @@ img { max-width: 100%; display: block; }
   object-fit: contain;
 }
 .partner-name {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 1rem;
   color: var(--navy);
@@ -446,7 +497,7 @@ img { max-width: 100%; display: block; }
 }
 .event-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 28px rgba(26,39,68,0.1);
+  box-shadow: 0 8px 28px rgba(27,43,66,0.1);
 }
 .event-icon {
   width: 48px;
@@ -463,7 +514,7 @@ img { max-width: 100%; display: block; }
   font-size: 1.2rem;
 }
 .event-card h3 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.05rem;
   color: var(--navy);
@@ -489,7 +540,7 @@ img { max-width: 100%; display: block; }
   border-radius: 8px;
   aspect-ratio: 4 / 3;
   cursor: pointer;
-  box-shadow: 0 2px 14px rgba(26,39,68,0.10);
+  box-shadow: 0 2px 14px rgba(27,43,66,0.10);
   transition: transform var(--transition), box-shadow var(--transition);
 }
 .gallery-item img {
@@ -502,7 +553,7 @@ img { max-width: 100%; display: block; }
 .gallery-item:hover,
 .gallery-item:focus-visible {
   transform: translateY(-4px);
-  box-shadow: 0 14px 34px rgba(26,39,68,0.28);
+  box-shadow: 0 14px 34px rgba(27,43,66,0.28);
   outline: none;
 }
 .gallery-item:hover img,
@@ -517,7 +568,7 @@ img { max-width: 100%; display: block; }
   padding: 2rem 1.25rem 1.1rem;
   text-align: left;
   color: var(--white);
-  background: linear-gradient(to top, rgba(26,39,68,0.94) 0%, rgba(26,39,68,0.78) 55%, rgba(26,39,68,0) 100%);
+  background: linear-gradient(to top, rgba(27,43,66,0.94) 0%, rgba(27,43,66,0.78) 55%, rgba(27,43,66,0) 100%);
   transform: translateY(100%);
   opacity: 0;
   transition: transform var(--transition), opacity var(--transition);
@@ -528,7 +579,7 @@ img { max-width: 100%; display: block; }
   opacity: 1;
 }
 .gallery-caption h4 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.05rem;
   color: var(--white);
@@ -551,7 +602,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: rgba(26,39,68,0.9);
+  background: rgba(27,43,66,0.9);
   cursor: zoom-out;
 }
 .lightbox.open {
@@ -609,12 +660,12 @@ img { max-width: 100%; display: block; }
 }
 .division-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(26,39,68,0.25);
+  box-shadow: 0 12px 32px rgba(27,43,66,0.25);
 }
 .division-icon {
   width: 52px;
   height: 52px;
-  background: rgba(201,168,76,0.15);
+  background: rgba(186,138,58,0.15);
   border: 1.5px solid var(--gold);
   border-radius: 50%;
   display: flex;
@@ -627,7 +678,7 @@ img { max-width: 100%; display: block; }
   font-size: 1.1rem;
 }
 .division-card h3 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.9rem;
   color: var(--gold);
@@ -694,7 +745,7 @@ a.team-card:hover .team-photo {
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #e3e6ef, #cdd2e0);
+  background: var(--off-white);
   border: 3px solid var(--gold);
   margin-bottom: 1rem;
   overflow: hidden;
@@ -706,7 +757,7 @@ a.team-card:hover .team-photo {
   display: block;
 }
 .team-name {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 1rem;
   color: var(--navy);
@@ -736,7 +787,7 @@ a.team-card:hover .team-photo {
 }
 .alumni-logo {
   background: var(--white);
-  border: 1px solid rgba(26,39,68,0.10);
+  border: 1px solid rgba(27,43,66,0.10);
   border-radius: 8px;
   width: 100%;
   height: 118px;
@@ -744,12 +795,12 @@ a.team-card:hover .team-photo {
   align-items: center;
   justify-content: center;
   padding: 1.1rem 1.4rem;
-  box-shadow: 0 1px 3px rgba(26,39,68,0.05);
+  box-shadow: 0 1px 3px rgba(27,43,66,0.05);
   transition: transform var(--transition), box-shadow var(--transition);
 }
 .alumni-logo:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(26,39,68,0.18);
+  box-shadow: 0 8px 24px rgba(27,43,66,0.18);
 }
 .alumni-logo img {
   max-width: 140px;
@@ -807,7 +858,7 @@ a.team-card:hover .team-photo {
   background: var(--white);
   border-radius: 10px;
   padding: 2.5rem;
-  box-shadow: 0 4px 24px rgba(26,39,68,0.08);
+  box-shadow: 0 4px 24px rgba(27,43,66,0.08);
 }
 .form-group { margin-bottom: 1.25rem; }
 .form-group input,
@@ -817,7 +868,7 @@ a.team-card:hover .team-photo {
   padding: 0.85rem 1rem;
   border: 1.5px solid #e0e0e0;
   border-radius: 6px;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   color: var(--text);
   background: var(--white);
@@ -862,7 +913,7 @@ a.team-card:hover .team-photo {
 }
 .footer-logo { width: 70px; height: 70px; }
 .footer-text {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.85rem;
   letter-spacing: 0.04em;
@@ -945,7 +996,7 @@ a.team-card:hover .team-photo {
     margin: 0.5rem 0 0;
     gap: 1rem;
   }
-  .logo-svg { width: 40px; height: 40px; }
+  .logo-svg { height: 32px; width: auto; }
   .hamburger { display: flex; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
   .section-title { font-size: 1.5rem; }
