@@ -164,6 +164,13 @@ contactForm.addEventListener('submit', async e => {
   btn.disabled = false;
 });
 
+// ── BACK TO TOP ──
+const backToTop = document.getElementById('back-to-top');
+function updateBackToTop() {
+  if (!backToTop) return;
+  backToTop.classList.toggle('visible', window.scrollY > window.innerHeight * 0.6);
+}
+
 // ── MAIN SCROLL HANDLER ──
 let ticking = false;
 window.addEventListener('scroll', () => {
@@ -172,6 +179,7 @@ window.addEventListener('scroll', () => {
       updateProgress();
       updateNavStyle();
       updateActiveLink();
+      updateBackToTop();
       ticking = false;
     });
     ticking = true;
@@ -182,3 +190,4 @@ window.addEventListener('scroll', () => {
 updateProgress();
 updateNavStyle();
 updateActiveLink();
+updateBackToTop();
