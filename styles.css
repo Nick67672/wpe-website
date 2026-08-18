@@ -233,6 +233,8 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   scroll-snap-align: start;
   padding-top: var(--nav-h);
+  padding-bottom: var(--nav-h);
+
 }
 
 .container {
