@@ -708,7 +708,7 @@ img { max-width: 100%; display: block; }
 
 /* ── OUR TEAM ── */
 .team {
-  background: var(--off-white);
+  background: var(--white);
 }
 .team .container {
   text-align: center;
@@ -785,7 +785,7 @@ img { max-width: 100%; display: block; }
 
 /* ── NOTABLE ALUMNI ── */
 .alumni {
-  background: var(--white);
+  background: var(--off-white);
 }
 .alumni .container {
   text-align: center;
@@ -824,7 +824,7 @@ img { max-width: 100%; display: block; }
 
 /* ── CONTACT ── */
 .contact {
-  background: var(--off-white);
+  background: var(--white);
 }
 .contact .container {
   padding-top: 4rem;
