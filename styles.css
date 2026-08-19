@@ -1191,6 +1191,11 @@ a.team-card::after {
 
 /* ── Insights section ─────────────────────────────────────────── */
 .insights { background: var(--off-white); }
+.insights .container {
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
 .insights-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
