@@ -708,7 +708,7 @@ img { max-width: 100%; display: block; }
 
 /* ── OUR TEAM ── */
 .team {
-  background: var(--white);
+  background: var(--off-white);
 }
 .team .container {
   text-align: center;
@@ -785,7 +785,7 @@ img { max-width: 100%; display: block; }
 
 /* ── NOTABLE ALUMNI ── */
 .alumni {
-  background: var(--off-white);
+  background: var(--white);
 }
 .alumni .container {
   text-align: center;
@@ -824,7 +824,7 @@ img { max-width: 100%; display: block; }
 
 /* ── CONTACT ── */
 .contact {
-  background: var(--white);
+  background: var(--off-white);
 }
 .contact .container {
   padding-top: 4rem;
@@ -1256,4 +1256,25 @@ a.team-card::after {
 }
 @media (max-width: 480px) {
   .insights-grid { grid-template-columns: 1fr; max-width: 300px; margin-inline: auto; }
+}
+
+/* ── Resources section ────────────────────────────────────────── */
+.resources { background: var(--white); }
+.resources .container {
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 840px;
+  margin: 1.5rem auto 0;
+}
+@media (max-width: 780px) {
+  .resources-grid { grid-template-columns: repeat(2, 1fr); max-width: 560px; }
+}
+@media (max-width: 480px) {
+  .resources-grid { grid-template-columns: 1fr; max-width: 300px; }
 }
