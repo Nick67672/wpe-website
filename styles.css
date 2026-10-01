@@ -434,7 +434,7 @@ img { max-width: 100%; display: block; }
 
 /* ── PARTNERS ── */
 .partners {
-  background: var(--white);
+  background: var(--off-white);
 }
 .partners .container {
   text-align: center;
@@ -495,7 +495,7 @@ img { max-width: 100%; display: block; }
 
 /* ── EVENTS ── */
 .events {
-  background: var(--off-white);
+  background: var(--white);
 }
 .events .container {
   text-align: center;
@@ -509,7 +509,7 @@ img { max-width: 100%; display: block; }
   text-align: left;
 }
 .event-card {
-  background: var(--white);
+  background: var(--off-white);
   border-radius: 8px;
   padding: 2rem 1.75rem;
   border-left: 4px solid var(--gold);
@@ -655,7 +655,7 @@ img { max-width: 100%; display: block; }
 
 /* ── DIVISIONS ── */
 .divisions {
-  background: var(--white);
+  background: var(--off-white);
 }
 .divisions .container {
   text-align: center;
@@ -714,7 +714,7 @@ img { max-width: 100%; display: block; }
 
 /* ── OUR TEAM ── */
 .team {
-  background: var(--off-white);
+  background: var(--white);
 }
 .team .container {
   text-align: center;
@@ -791,7 +791,7 @@ img { max-width: 100%; display: block; }
 
 /* ── NOTABLE ALUMNI ── */
 .alumni {
-  background: var(--white);
+  background: var(--off-white);
 }
 .alumni .container {
   text-align: center;
@@ -830,7 +830,7 @@ img { max-width: 100%; display: block; }
 
 /* ── CONTACT ── */
 .contact {
-  background: var(--off-white);
+  background: var(--white);
 }
 .contact .container {
   padding-top: 4rem;
@@ -1196,7 +1196,7 @@ a.team-card::after {
 }
 
 /* ── Insights section ─────────────────────────────────────────── */
-.insights { background: var(--off-white); }
+.insights { background: var(--white); }
 .insights .container {
   text-align: center;
   padding-top: 4rem;
@@ -1265,7 +1265,7 @@ a.team-card::after {
 }
 
 /* ── Resources section ────────────────────────────────────────── */
-.resources { background: var(--white); }
+.resources { background: var(--off-white); }
 .resources .container {
   text-align: center;
   padding-top: 4rem;
